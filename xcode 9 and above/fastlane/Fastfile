@@ -134,3 +134,20 @@ platform :ios do
  #upload_to_testflight
 #end
 end
+
+
+ssh
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/node@6/bin/
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+security unlock-keychain -p MAC@altius /Users/altius-mac/Library/Keychains/login.keychain
+cd /Users/altius-mac/workspace/MobCom-ios/
+cd ..
+sudo chmod -R 777 MobCom-ios/
+cd MobCom-ios/
+gem install bundler
+bundle install
+sudo rm -rf node_modules/
+sudo chmod -R 777 ../MobCom-ios/
+fastlane ios build
